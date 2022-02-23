@@ -5,56 +5,89 @@
     <title>PersonDB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+
 </head>
+
+    <style>
+
+        .mainDiv {
+        display: flex;
+        justify-content: space-between;
+        }
+
+        .leftDiv {
+        margin-top: 2rem;
+        margin-left: 2rem;
+        width: 20%;
+        }
+
+        .rightDiv {
+        margin-right: 2rem;
+        margin-top: 2rem;
+        width: 70%;
+        }
+
+    </style>
 <body>
 
+<div class="mainDiv">
+    <div class="leftDiv">
+                <h1>PERSON DB <span class="badge bg-secondary" th:text="${countPersonInDB}"></span></h1>
+            <form action="savePerson" method="post" th:object="${personToSave}">
+                    <label for="exampleInputEmail1" class="form-label">Vor- und Nachname</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{name}">
 
-<div class="container">
-    <div class="row">
-        <div class="col" style="margin-top: 6rem;">
-            <h1>PERSON DB <span class="badge bg-secondary" th:text="${countPersonInDB}"></span></h1>
+                    <label for="exampleInputEmail1" class="form-label">Geburtsdatum</label>
+                    <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" th:field="*{birthday}">
+
+                    <label for="exampleInputEmail1" class="form-label">Email-Adresse</label>
+                    <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" th:field="*{email}">
+
+                    <label for="exampleInputEmail1" class="form-label">Straße</label>
+                    <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" th:field="*{streetName}">
+
+                    <label for="exampleInputEmail1" class="form-label">Nummer</label>
+                    <input type="number" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp"th:field="*{streetNumber}">
+
+                    <label for="exampleInputEmail1" class="form-label">Postleitzahl</label>
+                    <input type="number" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp"th:field="*{postalCode}">
+
+                    <label for="exampleInputEmail1" class="form-label">Stadt</label>
+                    <input type="text" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp"th:field="*{city}">
+
+                <button type="submit" class="btn btn-primary">Speichern</button>
+            </form>
+        </div>
+        <div class="rightDiv">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Vor- und Nachname</th>
+                    <th scope="col">Geburtsdatum</th>
+                    <th scope="col">E-Mail</th>
+                    <th scope="col">Straße</th>
+                    <th scope="col">Nummer</th>
+                    <th scope="col">Postleitzahl</th>
+                    <th scope="col">Stadt</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p : ${personList}">
+                    <th th:text="${p.id}"> </th>
+                    <th th:text="${p.name}"> </th>
+                    <th th:text="${p.birthday}"> </th>
+                    <th th:text="${p.email}"> </th>
+                    <th th:text="${p.streetName}"> </th>
+                    <th th:text="${p.streetNumber}"></th>
+                    <th th:text="${p.postalCode}"> </th>
+                    <th th:text="${p.city}"> </th>
+                </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-4" style="margin-left: 6rem;">
-        <form action="savePerson" method="post" th:object="${personToSave}">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Vor- und Nachname</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{name}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Geburtsdatum</label>
-                <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" th:field="*{birthday}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email-Adresse</label>
-                <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" th:field="*{email}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Straße</label>
-                <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" th:field="*{street}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nummer</label>
-                <input type="number" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp"th:field="*{streetNumber}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Postleitzahl</label>
-                <input type="number" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp"th:field="*{postalCode}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Stadt</label>
-                <input type="text" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp"th:field="*{city}">
-            </div>
-            <button type="submit" class="btn btn-primary">Speichern</button>
-        </form>
-        <div>
-
-        </div>
-    </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

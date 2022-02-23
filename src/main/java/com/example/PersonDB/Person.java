@@ -1,20 +1,20 @@
 package com.example.PersonDB;
 
 public class Person {
-    private String id;
+    private Integer id;
     private String name;
     private String birthday;
     private String email;
-    private String street;
+    private String streetName;
     private int streetNumber;
     private int postalCode;
     private String city;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -30,8 +30,8 @@ public class Person {
         return birthday;
     }
 
-    public void setBirhtday(String birhtday) {
-        this.birthday = birhtday;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getEmail() {
@@ -42,12 +42,12 @@ public class Person {
         this.email = email;
     }
 
-    public String getStreet() {
-        return street;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
     public int getStreetNumber() {
