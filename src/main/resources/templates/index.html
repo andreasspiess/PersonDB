@@ -27,6 +27,10 @@
         width: 70%;
         }
 
+        .button {
+        margin-top: 1rem;
+        }
+
     </style>
 <body>
 
@@ -54,8 +58,10 @@
 
                     <label for="exampleInputEmail1" class="form-label">Stadt</label>
                     <input type="text" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp"th:field="*{city}">
-
+            <div class="button">
                 <button type="submit" class="btn btn-primary">Speichern</button>
+                <button type="reset" class="btn btn-danger">Löschen</button>
+            </div>
             </form>
         </div>
         <div class="rightDiv">
@@ -70,18 +76,25 @@
                     <th scope="col">Nummer</th>
                     <th scope="col">Postleitzahl</th>
                     <th scope="col">Stadt</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="p : ${personList}">
                     <th th:text="${p.id}"> </th>
-                    <th th:text="${p.name}"> </th>
-                    <th th:text="${p.birthday}"> </th>
-                    <th th:text="${p.email}"> </th>
-                    <th th:text="${p.streetName}"> </th>
-                    <th th:text="${p.streetNumber}"></th>
-                    <th th:text="${p.postalCode}"> </th>
-                    <th th:text="${p.city}"> </th>
+                    <td th:text="${p.name}"> </td>
+                    <td th:text="${p.birthday}"> </td>
+                    <td th:text="${p.email}"> </td>
+                    <td th:text="${p.streetName}"> </td>
+                    <td th:text="${p.streetNumber}"></td>
+                    <td th:text="${p.postalCode}"> </td>
+                    <td th:text="${p.city}"> </td>
+                    <td>
+                        <form action="delete" method="post" >
+                            <input type="hidden" th:value="${p.id}" name="idToDelete">
+                            <button type="submit" class="btn btn-danger">Löschen</button>
+                        </form>
+                    </td>
                 </tr>
 
                 </tbody>

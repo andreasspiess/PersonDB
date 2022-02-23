@@ -47,4 +47,10 @@ public class PersonController {
 
         return this.showPerson(model);
     }
+    @PostMapping("delete")
+    public String deletePerson(Model model, int idToDelete) {
+        jdbcTemplate.update("DELETE FROM PERSON WHERE ID = ?", idToDelete);
+
+        return this.showPerson(model);
+    }
 }
